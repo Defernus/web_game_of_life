@@ -6,7 +6,6 @@
 #include <sstream>
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
 #include <emscripten.h>
 
 #include <SDL/SDL_opengl.h>
@@ -22,8 +21,6 @@ const int GRID_HEIGHT = 1024;
 int min_draw_radius = 0;
 int max_draw_radius = 128;
 int draw_radius = 10;
-
-TTF_Font *font; 
 
 Uint32 last_time_ms;
 
@@ -116,17 +113,6 @@ void draw() {
 int main() {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		printf("failed to init SDL: %s\n", SDL_GetError());
-		return -1;
-	}
-
-	if(TTF_Init() != 0) {
-		printf("failed to init TTF: %s\n", TTF_GetError());
-		return -1;
-	}
-
-	font = TTF_OpenFont("assets/fnt/OpenSans-Regular.ttf", 25);
-	if(font == NULL) {
-		printf("failed to load font: %s\n", SDL_GetError());
 		return -1;
 	}
 
